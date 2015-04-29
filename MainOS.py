@@ -24,16 +24,39 @@ print "Subjective Tweets: ", len(SubjectiveTweets)
 print "Objective Tweets: ", len(ObjectiveTweets)
 
 # Use the processor to processor the tweets, ready for making features
-SubjectiveTweets = processor.processTweet(SubjectiveTweets)
-ObjectiveTweets = processor.processTweet(ObjectiveTweets)
+SubjectiveTweets = processor.processTweet(SubjectiveTweets,
+										lemmatize=False, 
+										stem=False, 
+										synReplace=True)
+ObjectiveTweets = processor.processTweet(ObjectiveTweets,
+										lemmatize=False, 
+										stem=False, 
+										synReplace=True)
 
 # make features
-train, test = features_maker(SubjectiveTweets, ObjectiveTweets, 'Subjective', 'Objective')
+train, test = features_maker(SubjectiveTweets, ObjectiveTweets, 'Subjective', 'Objective', bigram=True)
 
 # train and test the classifier
 naiveBayes(train, test)
 
 ###############################################################
+# Test included bigrams and synonym replacement
+# train on 530 instances, test on 134 instances
+# accuracy: 0.671641791045
+# Most Informative Features
+#              playstation = True           Object : Subjec =     12.3 : 1.0
+#    (u'toilet', u'tonne') = True           Subjec : Object =      8.3 : 1.0
+#                    enjoy = True           Subjec : Object =      8.3 : 1.0
+# (u'tone', u'the_likes_of') = True           Subjec : Object =      6.3 : 1.0
+#           forzadiscovery = True           Subjec : Object =      6.3 : 1.0
+# (u'microsoft', u'employee') = True           Object : Subjec =      5.7 : 1.0
+#                 employee = True           Object : Subjec =      5.7 : 1.0
+#                     dark = True           Subjec : Object =      5.0 : 1.0
+#                   tetrad = True           Object : Subjec =      4.7 : 1.0
+#                   prissy = True           Subjec : Object =      4.3 : 1.0
+
+#################################################################
+# Test result for the first time, no bigram included, no synonym replacement
 # Subjective Tweets:  332
 # Objective Tweets:  332
 # train on 530 instances, test on 134 instances

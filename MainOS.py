@@ -17,7 +17,7 @@ processor = DataProcessor()
 
 # Read original tweets from database and make them having the same number of tweets, ready for process
 ObjectiveTweets = database.readDB("manual","Tweet","Score",1)
-SubjectiveTweets = (database.readDB("manual","Tweet","Score",1) + database.readDB("Sheet1","Tweet","Score",-1))[:len(ObjectiveTweets)]
+SubjectiveTweets = (database.readDB("manual","Tweet","Score",1) + database.readDB("manual","Tweet","Score",-1))[:len(ObjectiveTweets)]
 
 
 print "Subjective Tweets: ", len(SubjectiveTweets)

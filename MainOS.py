@@ -8,6 +8,8 @@ from GetData import Database
 from DataProcessing import DataProcessor
 from Classifiers import naiveBayes
 from Classifiers import features_maker
+from Classifiers import decisionTree
+from Classifiers import axentClassifier
 
 # Initialize the database object
 database = Database("test.db")
@@ -38,6 +40,8 @@ train, test = features_maker(SubjectiveTweets, ObjectiveTweets, 'Subjective', 'O
 
 # train and test the classifier
 naiveBayes(train, test)
+# decisionTree(train, test)
+#axentClassifier(train, test)
 
 ###############################################################
 # lematizer: off

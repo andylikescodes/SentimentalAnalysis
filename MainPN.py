@@ -9,6 +9,9 @@ from DataProcessing import DataProcessor
 from Classifiers import naiveBayes
 from Classifiers import features_maker
 from nltk.corpus import stopwords
+from Classifiers import decisionTree
+from Classifiers import axentClassifier
+
 
 # Initialize the database object
 database = Database("test.db")
@@ -43,6 +46,9 @@ train, test = features_maker(negativeTweets,
 
 # train and test the classifier
 naiveBayes(train, test)
+# decisionTree(train, test)
+# axentClassifier(train, test)
+
 ###################################################################
 # lematizer: off
 # stemmer: off
@@ -52,6 +58,8 @@ naiveBayes(train, test)
 # negative Tweets:  94
 # train on 150 instances, test on 38 instances
 # accuracy: 0.868421052632
+# {'Positive': 0.85, 'Negative': 0.8888888888888888} {'Positive': 0.89473684210526
+# 32, 'Negative': 0.8421052631578947}
 # Most Informative Features
 #                  repulse = True           Negati : Positi =      5.7 : 1.0
 #                    sound = True           Negati : Positi =      4.3 : 1.0

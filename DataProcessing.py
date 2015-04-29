@@ -4,6 +4,8 @@ from nltk.stem import PorterStemmer
 from nltk.tokenize import RegexpTokenizer
 from nltk.corpus import wordnet
 from nltk.corpus import stopwords
+from nltk.collocations import BigramCollocationFinder
+from nltk.metrics import BigramAssocMeasures
 
 class DataProcessor:
     def __init__(self):
@@ -36,16 +38,39 @@ class DataProcessor:
         else:
             return repl_word
 
+    # replace synonyms
+    def synReplace(self, word):
+        syns = set()
+        for syn in wordnet.synsets(word):
+            for lemma in syn.lemmas():
+                syns.add(lemma.name())
+        if len(syns) >= 1:
+            return syns.pop()
+        else:
+            return word
+
+    # find bygrams of the tweets
+    def findBigrams(self, tweet):
+        words = [w for w in tweet]
+        bigrams = BigramCollocationFinder.from_words(words)
+        return bigrams.nbest(BigramAssocMeasures.likelihood_ratio, 20)
+
+
     # Process original tweets into feature process ready tweets
-    def processTweet(self, tweets):
+    def processTweet(self, tweets, lemmatize=False, stem=False, synReplace=False):
         processed_tweet = []
         processed_tweet_collection = []
         for tweet in tweets:
             tokenized_tweet = self.reTokenize(tweet)
             for word in tokenized_tweet:
                 word = self.RepeatReplace(word)
-                word = self.lemmatize(word)
-                if word not in self.english_stops and len(word)>1:
+                if lemmatize == True:
+                    word = self.lemmatize(word)
+                if stem == True:
+                    word = self.stem(word)
+                if synReplace == True:
+                    word = self.synReplace(word)
+                if word not in self.english_stops and len(word)>3:
                     processed_tweet.append(word)
             processed_tweet_collection.append(processed_tweet)
             processed_tweet = []

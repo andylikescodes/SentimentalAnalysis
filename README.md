@@ -1,5 +1,12 @@
 # SentimentalAnalysis
 
+4/29/2015 10:49am
+
+Add two other classifiers in the Classifiers.py: decision tree and maximun entropy, but they are not performing as good as the naive bayes.
+
+Also added a accuracy and fitness calculator in Classifiers.py
+
+
 4/29/2015 9:35am
 
 Updated the MainPN.py and MainOS.py to enable or disable the lemmatizer, stemer, synReplacer, bigram finder

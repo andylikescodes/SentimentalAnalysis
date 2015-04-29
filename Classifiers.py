@@ -50,7 +50,7 @@ def naiveBayes(features_train, features_test):
 	print 'accuracy:', nltk.classify.util.accuracy(classifier, features_test)
 	classifier.show_most_informative_features()	
 	precisions, recalls = precision_recall(classifier, features_test)
-	print precisions, recalls
+	print "accuracy: ", precisions, "fitness: ", recalls
 
 # make features for traning set and testing set
 def features_maker(class1, class2, className1, className2, bigram=False):
@@ -62,15 +62,25 @@ def features_maker(class1, class2, className1, className2, bigram=False):
     testfeats = class1feats[class1cutoff:] + class2feats[class2cutoff:]	
     return trainfeats, testfeats
 
+# decision tree classifier
 def decisionTree(features_train, features_test):
 	print 'train on %d instances, test on %d instances' % (len(features_train), len(features_test))
-	classifier = DecisionTreeClassifier.train(features_train,binary=True)
+	classifier = DecisionTreeClassifier.train(features_train,
+												binary=True,
+												entropy_cutoff=0.8,
+												depth_cutoff=5,
+												support_cutoff=30)
 	print 'accuracy:', nltk.classify.util.accuracy(classifier, features_test)
+	precisions, recalls = precision_recall(classifier, features_test)
+	print "accuracy: ", precisions, "fitness: ", recalls
 
+# maximum entropy classifier
 def axentClassifier(features_train, features_test):
 	print 'train on %d instances, test on %d instances' % (len(features_train), len(features_test))
 	classifier = MaxentClassifier.train(features_train,algorithm='gis')
 	print 'accuracy:', nltk.classify.util.accuracy(classifier, features_test)
+	precisions, recalls = precision_recall(classifier, features_test)
+	print "accuracy: ", precisions, "fitness: ", recalls
 
 # def sklearnMultinomialNB(features_train, features_test):
 # 	print 'train on %d instances, test on %d instances' % (len(features_train), len(features_test))

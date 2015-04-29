@@ -1,5 +1,11 @@
 # SentimentalAnalysis
 
+4/29/2015 12:30am
+Updated the MainPN.py and MainOS.py to enable or disable the lemmatizer, stemer, synReplacer, bigram finder
+
+Updated the Classifiers.py and DataProcessing.py to include synReplacer and bigram finder
+
+4/29/2015 12:30am
 test.db - the manually scored tweets
 
 manual.xlsx - the manually scored tweets in an excel format

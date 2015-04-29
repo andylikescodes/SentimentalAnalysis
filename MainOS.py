@@ -40,6 +40,27 @@ train, test = features_maker(SubjectiveTweets, ObjectiveTweets, 'Subjective', 'O
 naiveBayes(train, test)
 
 ###############################################################
+# lematizer: off
+# stemmer: off
+# synReplacer: on
+# bigram: on
+# Subjective Tweets:  332
+# Objective Tweets:  332
+# train on 530 instances, test on 134 instances
+# accuracy: 0.686567164179
+# Most Informative Features
+#              playstation = True           Object : Subjec =     12.3 : 1.0
+#    (u'toilet', u'tonne') = True           Subjec : Object =      8.3 : 1.0
+#                    enjoy = True           Subjec : Object =      8.3 : 1.0
+# (u'tone', u'the_likes_of') = True           Subjec : Object =      6.3 : 1.0
+#           forzadiscovery = True           Subjec : Object =      6.3 : 1.0
+# (u'microsoft', u'employee') = True           Object : Subjec =      5.7 : 1.0
+#                 employee = True           Object : Subjec =      5.7 : 1.0
+#                     dark = True           Subjec : Object =      5.0 : 1.0
+#                   tetrad = True           Object : Subjec =      4.7 : 1.0
+#                   prissy = True           Subjec : Object =      4.3 : 1.0
+
+###############################################################
 # Test included bigrams and synonym replacement
 # train on 530 instances, test on 134 instances
 # accuracy: 0.671641791045

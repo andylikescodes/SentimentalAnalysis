@@ -1,9 +1,13 @@
 # SentimentalAnalysis
 
-4/29/2015 12:30am
+4/29/2015 9:35am
+
 Updated the MainPN.py and MainOS.py to enable or disable the lemmatizer, stemer, synReplacer, bigram finder
 
 Updated the Classifiers.py and DataProcessing.py to include synReplacer and bigram finder
+
+Sujective and Objective accuracy: 0.686567164179
+Negative and Possitive accuracy: 0.868421052632
 
 4/29/2015 12:30am
 test.db - the manually scored tweets

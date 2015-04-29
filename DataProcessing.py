@@ -25,7 +25,7 @@ class DataProcessor:
     def reTokenize(self, string):
         return self.retokenizer.tokenize(string)
 
-    # replace repeated words
+    # replace words with repeated letters
     def RepeatReplace(self, word):
         if wordnet.synsets(word):
             return word

@@ -10,7 +10,7 @@ class Database:
 		self.c = self.conn.cursor()
 		self.processor = DataProcessor()
 
-	# retrieve data from test.db
+	# retrieve data
 	# inputs:
 	# database - name of database
 	# table - name of table in database

@@ -1,5 +1,8 @@
 # SentimentalAnalysis
 
+This project is to build a classifier to classify tweets into negative and positive sentiments. The data set includes more than 60,000 tweets that are uncleaned. The project includes preprocessing data and building a Naive Bayes classifier.
+
+
 4/29/2015 10:49am
 
 Add two other classifiers in the Classifiers.py: decision tree and maximun entropy, but they are not performing as good as the naive bayes.
